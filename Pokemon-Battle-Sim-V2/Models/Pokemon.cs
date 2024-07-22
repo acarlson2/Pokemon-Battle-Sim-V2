@@ -14,6 +14,10 @@ namespace Pokemon_Battle_Sim_V2.Models
 
         public string Nature { get; set; } //A nature can effect certain stats (i.e. Modest: increase Special Attack, decrease Attack)
 
+        public string FrontSprite { get; set; } //The image that shows what the Pokemon looks like from the front (saved for player 2)
+
+        public string BackSprite { get; set; } //The image that shows what the Pokemon looks like from the back (saved for player 1)
+
         public int Level { get; set; } //The level a Pokemon is at. Levels are between 1 and 100
 
         public double Weight { get; set; } //A Pokemon's weight can sometimes affect the power of certain moves (i.e. Grass Knot)
@@ -44,6 +48,10 @@ namespace Pokemon_Battle_Sim_V2.Models
             Weight = (double)data.GetValue("weight") / 10; //weight in kg
             Height = (double)data.GetValue("height") / 10; //height in m
             Nature = nature;
+
+            var sprites = data.SelectToken("sprites");
+            FrontSprite = sprites.SelectToken("front_default").ToString();
+            BackSprite = sprites.SelectToken("back_default").ToString();
 
             var types = data.SelectToken("types");
             for (int i = 0; i < types.Count(); i++)

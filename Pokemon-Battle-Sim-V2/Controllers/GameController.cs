@@ -25,6 +25,11 @@ namespace Pokemon_Battle_Sim_V2.Controllers
         {
             return View();
         }
+
+        public IActionResult Move(List<Move> moves)
+        {
+            return View(moves);
+        }
     }
 }
 
