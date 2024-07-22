@@ -1,0 +1,10 @@
+﻿@model List<Move>
+
+<table class="moveList">
+    @foreach(var move in @Model)
+    {
+        <tr>
+            <td>@move.MoveName</td>
+        </tr>
+    }
+</table>
