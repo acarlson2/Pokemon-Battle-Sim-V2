@@ -42,6 +42,11 @@ namespace Pokemon_Battle_Sim_V2.Controllers
                 return View(player2);
             }
         }
+
+        public IActionResult HP()
+        {
+            return View(player1);
+        }
     }
 }
 
