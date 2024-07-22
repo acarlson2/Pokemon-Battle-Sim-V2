@@ -30,6 +30,18 @@ namespace Pokemon_Battle_Sim_V2.Controllers
         {
             return View(moves);
         }
+
+        public IActionResult Sprites(string spritePath)
+        {
+            if(player1.FrontSprite == spritePath)
+            {
+                return View(player1);
+            }
+            else
+            {
+                return View(player2);
+            }
+        }
     }
 }
 
