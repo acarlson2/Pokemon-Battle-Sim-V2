@@ -12,4 +12,12 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\Game\" />
+    <None Remove="Views\Selection\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Game\" />
+    <Folder Include="Views\Selection\" />
+  </ItemGroup>
 </Project>

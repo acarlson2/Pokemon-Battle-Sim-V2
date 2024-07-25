@@ -28,7 +28,7 @@ namespace Pokemon_Battle_Sim_V2.Models
 
         public List<double> StatList { get; set; } = new List<double>(); //{HP, Attack, Defense, Special Attack, Special Defense, Speed}
 
-        public List<Move> MoveList { get; set; } = new List<Move>(); //Each Pokemon can have up to 4 unique moves
+        public List<Move> MoveList { get; set; } = new List<Move>(); //Each Pokemon can have up to 4 different moves
 
         //Constructor
         public Pokemon(HttpClient client)
