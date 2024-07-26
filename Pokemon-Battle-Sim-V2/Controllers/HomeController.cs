@@ -7,16 +7,25 @@ namespace Pokemon_Battle_Sim_V2.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly PokeAPI _pokeApi;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, PokeAPI pokeApi)
     {
         _logger = logger;
+        _pokeApi = pokeApi;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
+        //var call = new PokeAPI();
 
-        return View();
+        var callName = Request.Form["pokeName"].ToString();
+        var callLevel = int.Parse(Request.Form["pokeLevel"]);
+        var callNature = Request.Form["pokeNature"].ToString();
+
+        var result = await _pokeApi.GetBasicInfo(callName, callLevel, callNature);
+        
+        return View(result);
     }
 
     public IActionResult Privacy()
