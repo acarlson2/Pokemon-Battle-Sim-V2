@@ -24,6 +24,8 @@ namespace Pokemon_Battle_Sim_V2.Models
         // Nature of the Pokémon (affects certain stats)
         [Required]
         public string Nature { get; set; }
+
+        public string Sprite { get; set; }
     }
 }
 
