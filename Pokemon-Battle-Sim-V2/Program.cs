@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<PokeAPI>();
+builder.Services.AddHttpClient<IPokeAPI, PokeAPI>();
 
 
 var app = builder.Build();

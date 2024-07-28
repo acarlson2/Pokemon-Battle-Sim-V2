@@ -7,27 +7,37 @@ namespace Pokemon_Battle_Sim_V2.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly PokeAPI _pokeApi;
+    private readonly IPokeAPI _pokeApi;
 
-    public HomeController(ILogger<HomeController> logger, PokeAPI pokeApi)
+    public HomeController(ILogger<HomeController> logger, IPokeAPI pokeApi)
     {
         _logger = logger;
         _pokeApi = pokeApi;
     }
 
+
+    [HttpGet]
     public async Task<IActionResult> Index()
     {
-        //var call = new PokeAPI();
-
-        var callName = Request.Form["pokeName"].ToString();
-        var callLevel = int.Parse(Request.Form["pokeLevel"]);
-        var callNature = Request.Form["pokeNature"].ToString();
-
-        var result = await _pokeApi.GetBasicInfo(callName, callLevel, callNature);
-        
-        return View(result);
+        return View();
     }
 
+    [HttpPost]
+    public async Task<IActionResult> Index(Pokemon model)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(model); // Return the view with validation errors
+        }
+
+        var result = await _pokeApi.GetBasicInfo(model.Name, model.Level, model.Nature);
+        return RedirectToAction("Result", new { name = result.Name, level = result.Level, nature = result.Nature });
+    }
+
+    public IActionResult Result(PokeBasic result)
+    {
+        return View(result);
+    }
     public IActionResult Privacy()
     {
         return View();
@@ -39,4 +49,3 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }
-
