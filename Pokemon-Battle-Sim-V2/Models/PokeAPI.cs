@@ -25,7 +25,7 @@ namespace Pokemon_Battle_Sim_V2.Models
                 Name = data["name"].ToString(),
                 Level = level,
                 Nature = nature,
-                Sprite = data.GetValue("sprites/front_default/").ToString()
+                ID = data["id"].ToString()
             };
         }
 

@@ -31,7 +31,7 @@ public class HomeController : Controller
         }
 
         var result = await _pokeApi.GetBasicInfo(model.Name, model.Level, model.Nature);
-        return RedirectToAction("Result", new { name = result.Name, level = result.Level, nature = result.Nature });
+        return RedirectToAction("Result", new { name = result.Name, level = result.Level, nature = result.Nature, id = result.ID });
     }
 
     public IActionResult Result(PokeBasic result)

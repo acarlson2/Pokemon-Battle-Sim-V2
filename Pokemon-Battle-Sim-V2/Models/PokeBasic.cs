@@ -25,7 +25,9 @@ namespace Pokemon_Battle_Sim_V2.Models
         [Required]
         public string Nature { get; set; }
 
-        public string Sprite { get; set; }
+        // The pokedex ID of the Pokemon (used to get the image of the Pokemon)
+        [Required]
+        public string ID { get; set; }
     }
 }
 
